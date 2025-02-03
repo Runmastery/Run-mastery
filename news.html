@@ -6,17 +6,131 @@
   <title>Latest News - Run Mastery</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Här kan du lägga till specifik styling för nyhetsflödet, alternativt lägga in detta i din style.css */
-    .news-feed {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
+    /* Gemensam styling för enhetlig design */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       background-color: #f4f4f4;
     }
+
+    header {
+      background-color: #ffcc00;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    header h1 a {
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    header p {
+      font-size: 1rem;
+      margin: 10px 0 0;
+    }
+
+    nav {
+      background-color: #000;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li {
+      margin: 0 15px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ffcc00;
+    }
+
+    .menu-toggle {
+      display: none;
+      background-color: #000;
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .menu-toggle:hover {
+      color: #ffcc00;
+    }
+
+    /* Hero-sektion */
+    .hero {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 60vh;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .hero .cta-button {
+      margin-top: 20px;
+    }
+
+    /* Nyhetsflöde */
+    .news-feed {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 40px 20px;
+      background-color: #f4f4f4;
+      box-sizing: border-box;
+    }
+
     .news-feed h2 {
       text-align: center;
       margin-bottom: 30px;
+      font-size: 2rem;
     }
+
     .news-item {
       display: flex;
       flex-wrap: wrap;
@@ -26,29 +140,35 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       overflow: hidden;
     }
+
     .news-item img {
       width: 100%;
       max-width: 300px;
       object-fit: cover;
     }
+
     .news-content {
       padding: 20px;
       flex: 1;
     }
+
     .news-content h3 {
       margin-top: 0;
       font-size: 1.8rem;
     }
+
     .news-date {
       font-size: 0.9rem;
       color: #777;
       margin-bottom: 10px;
     }
+
     .news-summary {
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 20px;
     }
+
     .cta-button {
       display: inline-block;
       padding: 10px 20px;
@@ -59,33 +179,84 @@
       border-radius: 5px;
       transition: background 0.3s;
     }
+
     .cta-button:hover {
       background-color: #e6b800;
     }
+
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
     @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 10px 20px;
+      }
+      
+      .nav-links {
+        display: none;
+        flex-direction: column;
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
       .news-item {
         flex-direction: column;
       }
+      
       .news-item img {
         max-width: 100%;
       }
     }
   </style>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
 </head>
 <body>
+  <!-- Header med logga -->
   <header>
     <h1><a href="index.html">Run Mastery</a></h1>
+    <p>Your platform for training programs and running inspiration</p>
   </header>
+
+  <!-- Navigeringsmeny -->
   <nav>
-    <!-- Lägg in navigeringsmenyn här (som på index-sidan) -->
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
+      <li><a href="programs.html">Training Programs</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="races.html">Races</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="https://open.spotify.com/show/5Uhzo2FkI9AzKYRYcE7V14?si=2IW5iTprTbCvlRagPcFs5w" target="_blank">Podcast</a></li>
+      <li><a href="https://www.instagram.com/run_mastery/" target="_blank">Instagram</a></li>
       <li><a href="about_us.html">About Us</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <!-- Andra länkar -->
     </ul>
   </nav>
 
+  <!-- Hero-sektion specifik för nyhetssidan -->
+  <section class="hero">
+    <div>
+      <h2>Latest News</h2>
+      <p>Stay updated with the latest trends, race updates, and expert running tips.</p>
+    </div>
+  </section>
+
+  <!-- Nyhetsflöde -->
   <section class="news-feed">
     <h2>Latest News</h2>
     
@@ -112,6 +283,7 @@
     <!-- Fler nyhetsposter kan läggas in här -->
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Run Mastery. All rights reserved.</p>
   </footer>
