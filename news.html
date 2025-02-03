@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latest News - Run Mastery</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Här kan du lägga till specifik styling för nyhetsflödet, alternativt lägga in detta i din style.css */
+    .news-feed {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: #f4f4f4;
+    }
+    .news-feed h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .news-item {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .news-item img {
+      width: 100%;
+      max-width: 300px;
+      object-fit: cover;
+    }
+    .news-content {
+      padding: 20px;
+      flex: 1;
+    }
+    .news-content h3 {
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+    .news-date {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 10px;
+    }
+    .news-summary {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ffcc00;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #e6b800;
+    }
+    @media (max-width: 768px) {
+      .news-item {
+        flex-direction: column;
+      }
+      .news-item img {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html">Run Mastery</a></h1>
+  </header>
+  <nav>
+    <!-- Lägg in navigeringsmenyn här (som på index-sidan) -->
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <!-- Andra länkar -->
+    </ul>
+  </nav>
+
+  <section class="news-feed">
+    <h2>Latest News</h2>
+    
+    <div class="news-item">
+      <img src="path/to/image1.jpg" alt="News image 1">
+      <div class="news-content">
+        <h3>News Title 1</h3>
+        <p class="news-date">March 15, 2025</p>
+        <p class="news-summary">This is a summary of the first news item. It provides a brief overview of the content.</p>
+        <a href="news-detail1.html" class="cta-button">Read More</a>
+      </div>
+    </div>
+    
+    <div class="news-item">
+      <img src="path/to/image2.jpg" alt="News image 2">
+      <div class="news-content">
+        <h3>News Title 2</h3>
+        <p class="news-date">March 10, 2025</p>
+        <p class="news-summary">This is a summary of the second news item. It gives a quick snapshot of what the news is about.</p>
+        <a href="news-detail2.html" class="cta-button">Read More</a>
+      </div>
+    </div>
+    
+    <!-- Fler nyhetsposter kan läggas in här -->
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Run Mastery. All rights reserved.</p>
+  </footer>
+</body>
+</html>
