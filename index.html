@@ -41,11 +41,29 @@
       margin: 0;
     }
 
+    .nav-links li {
+      margin: 0 15px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ffcc00;
+    }
+
     .hero {
       width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
       height: 60vh;
       background: black;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
@@ -53,43 +71,15 @@
       padding: 20px;
     }
 
-    .overview {
-      background-color: white;
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .overview-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
+    .overview-buttons,
+    .content-section {
       max-width: 800px;
       margin: auto;
-    }
-
-    .overview-buttons a {
-      display: block;
-      background-color: black;
-      color: white;
-      padding: 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 1.2rem;
-      transition: background 0.3s;
-    }
-
-    .overview-buttons a:hover {
-      background-color: #ffcc00;
-      color: black;
     }
 
     .content-section {
       padding: 40px;
       text-align: center;
-    }
-
-    .content-section h2 {
-      margin-bottom: 10px;
     }
 
     .cta-button {
@@ -100,7 +90,6 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
-      margin-top: 10px;
       transition: background 0.3s;
     }
 
@@ -122,10 +111,25 @@
     <p>Your platform for training programs and running inspiration</p>
   </header>
 
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#programs">Training Programs</a></li>
+      <li><a href="#calculators">Calculators</a></li>
+      <li><a href="#races">Races</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#podcast">Podcast</a></li>
+      <li><a href="#instagram">Instagram</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <section class="hero">
     <div>
       <h2>Master Your Running</h2>
       <p>Join a community of passionate runners and get expert training plans.</p>
+      <a href="#programs" class="cta-button">Explore Training Programs</a>
     </div>
   </section>
 
@@ -150,22 +154,40 @@
     <a href="#calculators" class="cta-button">Try Now</a>
   </section>
 
-  <section class="content-section" id="news">
-    <h2>Latest News</h2>
-    <p>Stay up to date with the latest trends, race updates, and expert running tips.</p>
-    <a href="#news" class="cta-button">Read More</a>
-  </section>
-
   <section class="content-section" id="races">
     <h2>Upcoming Races</h2>
     <p>Find information on major marathons and running events worldwide.</p>
     <a href="#races" class="cta-button">Discover More</a>
   </section>
 
+  <section class="content-section" id="news">
+    <h2>Latest News</h2>
+    <p>Stay up to date with the latest trends, race updates, and expert running tips.</p>
+    <a href="#news" class="cta-button">Read More</a>
+  </section>
+
+  <section class="content-section" id="podcast">
+    <h2>Run Mastery Podcast</h2>
+    <p>Listen to expert advice and inspiring stories from top runners.</p>
+    <a href="#podcast" class="cta-button">Listen Now</a>
+  </section>
+
   <section class="content-section" id="instagram">
     <h2>Follow Us on Instagram</h2>
     <p>Get inspired by training tips, community highlights, and behind-the-scenes content.</p>
     <a href="https://www.instagram.com/run_mastery/" class="cta-button" target="_blank">Follow Us</a>
+  </section>
+
+  <section class="content-section" id="about">
+    <h2>About Us</h2>
+    <p>Learn more about our mission to help runners achieve their best performance.</p>
+    <a href="#about" class="cta-button">Learn More</a>
+  </section>
+
+  <section class="content-section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions or want to collaborate? Get in touch with us!</p>
+    <a href="#contact" class="cta-button">Get in Touch</a>
   </section>
 
   <footer>
