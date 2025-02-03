@@ -4,34 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Run Mastery</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
   <style>
-    /* Samma grundläggande styling som i index-sidan för enhetlighet */
+    /* Gemensam styling för enhetlig design */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f4f4f4;
     }
+    
     header {
       background-color: #ffcc00;
       padding: 20px;
       text-align: center;
     }
+    
     header h1 {
       font-size: 3rem;
       font-weight: bold;
       margin: 0;
     }
+    
     header h1 a {
       color: black;
       text-decoration: none;
       text-transform: uppercase;
     }
+    
     header p {
       font-size: 1rem;
       margin: 10px 0 0;
     }
+    
     nav {
       background-color: #000;
       padding: 15px 0;
@@ -43,24 +48,29 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+    
     .nav-links {
       display: flex;
       list-style: none;
       padding: 0;
       margin: 0;
     }
+    
     .nav-links li {
       margin: 0 15px;
     }
+    
     .nav-links a {
       color: white;
       text-decoration: none;
       font-size: 1rem;
       transition: color 0.3s;
     }
+    
     .nav-links a:hover {
       color: #ffcc00;
     }
+    
     .menu-toggle {
       display: none;
       background-color: #000;
@@ -70,10 +80,12 @@
       padding: 10px;
       cursor: pointer;
     }
+    
     .menu-toggle:hover {
       color: #ffcc00;
     }
-    /* Hero-sektion för introduktion */
+    
+    /* Hero-sektion (används som introduktion även här) */
     .hero {
       width: 100%;
       max-width: 1200px;
@@ -89,18 +101,22 @@
       padding: 20px;
       box-sizing: border-box;
     }
+    
     .hero h2 {
       font-size: 2.5rem;
       margin-bottom: 10px;
     }
+    
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 20px;
     }
+    
     .hero .cta-button {
       margin-top: 20px;
     }
-    /* Innehållssektion */
+    
+    /* Innehållssektion för About Us-texten */
     .content-section {
       padding: 40px;
       text-align: center;
@@ -109,15 +125,18 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+    
     .content-section h2 {
       margin-bottom: 10px;
     }
+    
     .button-group {
       display: flex;
       justify-content: center;
       gap: 20px;
       margin-top: 30px;
     }
+    
     .button-group a {
       display: inline-block;
       padding: 15px 20px;
@@ -129,9 +148,11 @@
       border-radius: 5px;
       transition: background 0.3s;
     }
+    
     .button-group a:hover {
       background-color: #e6b800;
     }
+    
     .cta-button {
       display: inline-block;
       padding: 10px 20px;
@@ -142,30 +163,37 @@
       border-radius: 5px;
       transition: background 0.3s;
     }
+    
     .cta-button:hover {
       background-color: #e6b800;
     }
+    
     footer {
       background-color: #000;
       color: white;
       text-align: center;
       padding: 20px;
     }
+    
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
         padding: 10px 20px;
       }
+      
       .nav-links {
         display: none;
         flex-direction: column;
       }
+      
       .nav-links.active {
         display: flex;
       }
+      
       .menu-toggle {
         display: block;
       }
+      
       .button-group {
         flex-direction: column;
         gap: 15px;
@@ -180,11 +208,13 @@
   </script>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1><a href="index.html">Run Mastery</a></h1>
     <p>Your platform for training programs and running inspiration</p>
   </header>
 
+  <!-- Navigationsmeny -->
   <nav>
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
     <ul class="nav-links">
@@ -230,6 +260,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Run Mastery. All rights reserved.</p>
   </footer>
