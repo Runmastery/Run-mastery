@@ -35,14 +35,21 @@
     }
 
     .nav-links {
-      display: flex;
+      display: none;
+      flex-direction: column;
       list-style: none;
       padding: 0;
       margin: 0;
+      background-color: #000;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      text-align: center;
     }
 
     .nav-links li {
-      margin: 0 15px;
+      margin: 10px 0;
     }
 
     .nav-links a {
@@ -53,6 +60,19 @@
     }
 
     .nav-links a:hover {
+      color: #ffcc00;
+    }
+
+    .menu-toggle {
+      background-color: #000;
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .menu-toggle:hover {
       color: #ffcc00;
     }
 
@@ -69,6 +89,7 @@
       text-align: center;
       color: white;
       padding: 20px;
+      box-sizing: border-box;
     }
 
     .hero .cta-button {
@@ -76,10 +97,11 @@
     }
 
     .overview {
-      background-color: white;
+      background-color: #f4f4f4;
       color: black;
       padding: 50px 20px;
       text-align: center;
+      box-sizing: border-box;
     }
 
     .overview h2 {
@@ -114,6 +136,9 @@
       padding: 40px;
       text-align: center;
       background-color: #f4f4f4;
+      box-sizing: border-box;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .content-section h2 {
@@ -144,12 +169,16 @@
 
     @media (max-width: 768px) {
       nav {
-        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px 20px;
       }
 
-      .nav-links {
-        flex-direction: column;
-        align-items: center;
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links.active {
+        display: flex;
       }
 
       .overview-buttons {
@@ -158,6 +187,12 @@
       }
     }
   </style>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -166,6 +201,7 @@
   </header>
 
   <nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#programs">Training Programs</a></li>
