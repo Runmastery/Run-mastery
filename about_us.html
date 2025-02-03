@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Run Mastery</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Samma grundläggande styling som i index */
+    /* Samma grundläggande styling som i index-sidan för enhetlighet */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -73,7 +73,7 @@
     .menu-toggle:hover {
       color: #ffcc00;
     }
-    /* Hero/Intro section (används även här för konsekvens) */
+    /* Hero-sektion för introduktion */
     .hero {
       width: 100%;
       max-width: 1200px;
@@ -100,7 +100,7 @@
     .hero .cta-button {
       margin-top: 20px;
     }
-    /* Huvudinnehåll */
+    /* Innehållssektion */
     .content-section {
       padding: 40px;
       text-align: center;
@@ -111,6 +111,26 @@
     }
     .content-section h2 {
       margin-bottom: 10px;
+    }
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .button-group a {
+      display: inline-block;
+      padding: 15px 20px;
+      background-color: #ffcc00;
+      color: black;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .button-group a:hover {
+      background-color: #e6b800;
     }
     .cta-button {
       display: inline-block;
@@ -146,6 +166,10 @@
       .menu-toggle {
         display: block;
       }
+      .button-group {
+        flex-direction: column;
+        gap: 15px;
+      }
     }
   </style>
   <script>
@@ -176,29 +200,33 @@
     </ul>
   </nav>
 
-  <!-- Hero-sektion (används även som en introduktion) -->
+  <!-- Hero-sektion för About Us-sidan -->
   <section class="hero">
     <div>
       <h2>About Run Mastery</h2>
       <p>Discover who we are and what drives us to empower runners everywhere.</p>
-      <!-- Om du vill lägga in en CTA-knapp här, exempelvis: -->
-      <!-- <a href="contact.html" class="cta-button">Get in Touch</a> --> 
     </div>
   </section>
 
-  <!-- Huvudinnehåll med About Us-text -->
+  <!-- Innehållssektion med About Us-text och knappar -->
   <section class="content-section" id="about">
     <h2>About Us</h2>
     <p>
-      Run Mastery är din ultimata plattform för löpare på alla nivåer. Vår mission är att inspirera, utbilda och 
-      ge dig verktygen för att nå dina personliga mål. Vi erbjuder skräddarsydda träningsprogram, expertkunskap och 
-      en engagerad community som stöttar dig på varje steg av din löparresa.
+      Run Mastery is your ultimate platform for runners at every stage of their journey. Our mission is to inspire, educate, 
+      and empower you by providing the tools and guidance needed to reach your personal goals. We offer personalized training 
+      programs, expert advice, and a supportive community that stands by you every step of the way.
+      <br><br>
+      At Run Mastery, we focus not only on physical improvement but also on building mental resilience and fostering a healthy 
+      lifestyle. Our tailored training programs combine the latest sports science with proven methods to help you overcome challenges 
+      and achieve excellence. Our dedicated team of experts is here to ensure you have the resources needed to succeed.
+      <br><br>
+      Join our vibrant community of runners who share tips, celebrate milestones, and push each other to new heights. With Run 
+      Mastery as your partner, you can transform your running experience and become the best version of yourself.
     </p>
-    <!-- Tre knappar liknande de på startsidan -->
     <div class="button-group">
-      <a href="calculators.html" class="cta-button">Calculators</a>
-      <a href="programs.html" class="cta-button">Training Programs</a>
-      <a href="podcast.html" class="cta-button" target="_blank">Podcast</a>
+      <a href="calculators.html">Calculators</a>
+      <a href="programs.html">Training Programs</a>
+      <a href="podcast.html" target="_blank">Podcast</a>
     </div>
   </section>
 
