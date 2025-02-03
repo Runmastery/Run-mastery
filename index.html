@@ -71,15 +71,49 @@
       padding: 20px;
     }
 
-    .overview-buttons,
-    .content-section {
+    .hero .cta-button {
+      margin-top: 20px;
+    }
+
+    .overview {
+      background-color: black;
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .overview-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
       max-width: 800px;
       margin: auto;
+    }
+
+    .overview-buttons a {
+      display: block;
+      background-color: #ffcc00;
+      color: black;
+      padding: 15px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .overview-buttons a:hover {
+      background-color: #e6b800;
     }
 
     .content-section {
       padding: 40px;
       text-align: center;
+      background-color: #f4f4f4;
+    }
+
+    .content-section h2 {
+      margin-bottom: 10px;
     }
 
     .cta-button {
