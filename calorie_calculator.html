@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calorie Calculator for Running - Run Mastery</title>
-  <meta name="description" content="Accurately estimate the calories burned while running or walking based on weight, distance, duration, and elevation gain.">
-  <meta name="keywords" content="calorie calculator, running, running calories, fitness, running tools">
+  <title>Calorie Calculator - Run Mastery</title>
+  <meta name="description" content="Use our Calorie Calculator to determine how many calories you burn while running. Run Mastery provides precise tools for runners.">
+  <meta name="keywords" content="calorie calculator, running, fitness, Run Mastery, calories burned">
   <link rel="stylesheet" href="style.css">
   <style>
     body {
@@ -25,8 +25,45 @@
       font-weight: bold;
       margin: 0;
     }
-    header p {
-      font-size: 1.2rem;
+    header h1 a {
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    nav {
+      background-color: #000;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-wrap: nowrap;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .nav-links li {
+      margin: 0 15px;
+      white-space: nowrap;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #ffcc00;
+    }
+    .content-section {
+      max-width: 800px;
+      margin: 10px auto;
+      padding: 20px;
+      text-align: center;
     }
     .calculator-container {
       background-color: #ffffff;
@@ -92,73 +129,49 @@
 </head>
 <body>
   <header>
-    <h1>Run Mastery</h1>
+    <h1><a href="index.html">Run Mastery</a></h1>
     <p>Your platform for training programs and running inspiration</p>
   </header>
 
-  <section class="calculator-container">
-    <h2>Calorie Calculator for Running</h2>
-    <form onsubmit="calculateCalories(); return false;">
-      <label for="weight">Your Weight:</label>
-      <input type="number" id="weight" placeholder="e.g. 70" required>
-      <select id="weight-unit">
-        <option value="1">kg</option>
-        <option value="2.20462">lbs</option>
-      </select>
-      
-      <label for="distance">Distance:</label>
-      <input type="number" id="distance" placeholder="e.g. 5" required>
-      <select id="distance-unit">
-        <option value="1">km</option>
-        <option value="1.60934">miles</option>
-      </select>
-      
-      <label for="time">Duration (minutes):</label>
-      <input type="number" id="time" placeholder="e.g. 30" required>
-      
-      <label for="gender">Your Gender:</label>
-      <select id="gender">
-        <option value="1">Male</option>
-        <option value="0.9">Female</option>
-      </select>
-      
-      <label for="elevation">Elevation Gain (optional, meters):</label>
-      <input type="number" id="elevation" placeholder="e.g. 50">
-      
-      <button type="submit">Calculate</button>
-    </form>
-    <div id="result"></div>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="programs.html">Training Programs</a></li>
+      <li><a href="races.html">Races</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="content-section">
+    <h2>Calorie Calculator</h2>
+    <p><strong>Calculate Your Caloric Burn</strong></p>
+    <p>Use this calculator to estimate how many calories you burn while running based on weight, distance, time, and elevation.</p>
+    <div class="calculator-container">
+      <form onsubmit="calculateCalories(); return false;">
+        <label for="weight">Your Weight (kg):</label>
+        <input type="number" id="weight" placeholder="e.g. 70" required>
+        
+        <label for="distance">Distance (km):</label>
+        <input type="number" id="distance" placeholder="e.g. 5" required>
+
+        <label for="time">Duration (minutes):</label>
+        <input type="number" id="time" placeholder="e.g. 30" required>
+        
+        <label for="elevation">Elevation Gain (optional, meters):</label>
+        <input type="number" id="elevation" placeholder="e.g. 50">
+        
+        <button type="submit">Calculate Calories</button>
+      </form>
+      <div id="result"></div>
+    </div>
+    
+    <div class="button-group">
+      <a href="calculators.html">Back to All Calculators</a>
+    </div>
   </section>
-
-  <div class="button-group">
-    <a href="calculators.html">Back to All Calculators</a>
-  </div>
-
-  <script>
-    function calculateCalories() {
-      const weight = parseFloat(document.getElementById("weight").value);
-      const weightUnit = parseFloat(document.getElementById("weight-unit").value);
-      const distance = parseFloat(document.getElementById("distance").value);
-      const distanceUnit = parseFloat(document.getElementById("distance-unit").value);
-      const time = parseFloat(document.getElementById("time").value);
-      const genderFactor = parseFloat(document.getElementById("gender").value);
-      const elevation = parseFloat(document.getElementById("elevation").value) || 0;
-      
-      if (isNaN(weight) || isNaN(distance) || isNaN(time) || weight <= 0 || distance <= 0 || time <= 0) {
-        document.getElementById("result").innerHTML = "Please enter valid values for all fields.";
-        return;
-      }
-      
-      const convertedWeight = weight / weightUnit;
-      const convertedDistance = distance * distanceUnit;
-      const hours = time / 60;
-      const speed = convertedDistance / hours;
-      const baseMET = speed > 8 ? (speed < 16 ? 10 : 13.5) : 8;
-      const adjustedMET = baseMET + (elevation > 0 ? (elevation / 100) * 1.5 : 0);
-      const calories = adjustedMET * convertedWeight * hours * genderFactor;
-      
-      document.getElementById("result").innerHTML = `Estimated Calories Burned: <strong>${calories.toFixed(2)}</strong> kcal (Speed: ${speed.toFixed(2)} km/h)`;
-    }
-  </script>
 </body>
 </html>
