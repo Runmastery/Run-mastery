@@ -25,53 +25,6 @@
       font-weight: bold;
       margin: 0;
     }
-    header h1 a {
-      color: black;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-    nav {
-      background-color: #000;
-      padding: 15px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background-color: #000;
-      position: absolute;
-      top: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      text-align: center;
-      border-radius: 10px;
-      padding: 10px 0;
-    }
-    .nav-links a {
-      display: block;
-      padding: 10px;
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover {
-      color: #ffcc00;
-    }
-    .menu-icon {
-      display: block;
-      text-align: center;
-      padding: 10px;
-      font-size: 2rem;
-      color: white;
-      cursor: pointer;
-    }
-    .show-menu {
-      display: flex;
-    }
     .content-section {
       max-width: 800px;
       margin: 10px auto;
@@ -80,22 +33,55 @@
     }
     .calculator-container {
       background-color: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      margin: 20px auto;
-      max-width: 500px;
-      text-align: left;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin: 25px auto;
+      max-width: 450px;
+      text-align: center;
+    }
+    .calculator-container label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .calculator-container input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .calculator-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .calculator-container button:hover {
+      background-color: #e6b800;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #333;
     }
     .button-group a {
       display: inline-block;
-      padding: 10px 15px;
+      padding: 12px 18px;
       background-color: #ffcc00;
       color: black;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: bold;
-      border-radius: 5px;
+      border-radius: 6px;
       transition: background 0.3s;
     }
     .button-group a:hover {
@@ -105,26 +91,10 @@
 </head>
 <body>
   <header>
-    <h1><a href="index.html">Run Mastery</a></h1>
-    <p>Your platform for training programs and running inspiration</p>
+    <h1>Calorie Calculator</h1>
   </header>
 
-  <nav>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="calculators.html">Calculators</a></li>
-      <li><a href="programs.html">Training Programs</a></li>
-      <li><a href="races.html">Races</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="podcast.html">Podcast</a></li>
-      <li><a href="about_us.html">About Us</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
   <section class="content-section">
-    <h2>Calorie Calculator</h2>
     <p><strong>Calculate Your Caloric Burn</strong></p>
     <p>Use this calculator to estimate how many calories you burn while running based on weight, distance, time, and elevation.</p>
     <div class="calculator-container">
@@ -142,14 +112,8 @@
       <div id="result"></div>
     </div>
     <div class="button-group">
-      <a href="calculators.html" style="color:black;">Back to All Calculators</a>
+      <a href="calculators.html">Back to All Calculators</a>
     </div>
   </section>
-
-  <script>
-    function toggleMenu() {
-      document.querySelector(".nav-links").classList.toggle("show-menu");
-    }
-  </script>
 </body>
 </html>
