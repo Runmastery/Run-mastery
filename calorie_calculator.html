@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kalorikalkylator för Löpning & Gång - Run Mastery</title>
+  <title>Calorie Calculator for Running & Walking - Run Mastery</title>
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Använd vår kalorikalkylator för löpning och gång för att beräkna exakt hur många kalorier du bränner. Run Mastery är din ultimata plattform för löpning, med enkla verktyg för att optimera din träning.">
-  <meta name="keywords" content="kalkylator kalorier, löpning, Run Mastery, kalorikalkylator, gång">
+  <meta name="description" content="Use our Calorie Calculator for Running & Walking to get an accurate estimate of how many calories you burn. Run Mastery helps runners optimize training with precise tools.">
+  <meta name="keywords" content="calorie calculator, running, Run Mastery, running calculator, walking, calories burned">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Grundläggande styling */
+    /* General Styling */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -31,10 +31,6 @@
       color: black;
       text-decoration: none;
       text-transform: uppercase;
-    }
-    header p {
-      font-size: 1rem;
-      margin: 10px 0 0;
     }
     nav {
       background-color: #000;
@@ -75,7 +71,7 @@
     .menu-toggle:hover {
       color: #ffcc00;
     }
-    /* Hero-sektion */
+    /* Hero Section */
     .hero {
       width: 100%;
       max-width: 1200px;
@@ -99,10 +95,7 @@
       font-size: 1.2rem;
       margin-bottom: 20px;
     }
-    .hero .cta-button {
-      margin-top: 20px;
-    }
-    /* Innehållssektion för kalkylatorn och SEO-text */
+    /* Content Section */
     .content-section {
       max-width: 1200px;
       margin: 40px auto;
@@ -120,7 +113,7 @@
       margin-bottom: 20px;
       text-align: left;
     }
-    /* Formulär styling */
+    /* Form Styling */
     form {
       max-width: 500px;
       margin: 0 auto;
@@ -170,19 +163,6 @@
       padding: 20px;
       margin-top: 40px;
     }
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        padding: 10px 20px;
-      }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-      }
-      .nav-links.active {
-        display: flex;
-      }
-    }
   </style>
   <script>
     function toggleMenu() {
@@ -192,7 +172,6 @@
 
     function calculateCalories(event) {
       event.preventDefault();
-      // Hämta värden från formuläret
       const weight = parseFloat(document.getElementById("weight").value);
       const durationMinutes = parseFloat(document.getElementById("duration").value);
       const distanceMeters = parseFloat(document.getElementById("distance").value);
@@ -203,25 +182,15 @@
         return;
       }
       
-      // Omvandla minuter till timmar och meter till kilometer
       const durationHours = durationMinutes / 60;
       const distanceKm = distanceMeters / 1000;
-      
-      // Räkna ut hastighet (km/h)
       const speed = distanceKm / durationHours;
       
       let met = 0;
-      if (activity === "löpning") {
-        // Enkel bedömning av MET för löpning baserat på hastighet
-        if (speed < 8) {
-          met = 8;
-        } else if (speed < 10) {
-          met = 9;
-        } else {
-          met = 11;
-        }
-      } else if (activity === "gång") {
-        met = 3.5; // Standard MET-värde för gång
+      if (activity === "running") {
+        met = speed < 8 ? 8 : speed < 10 ? 9 : 11;
+      } else if (activity === "walking") {
+        met = 3.5;
       }
       
       const calories = met * weight * durationHours;
@@ -230,19 +199,17 @@
   </script>
 </head>
 <body>
-  <!-- Header med logga -->
   <header>
     <h1><a href="index.html">Run Mastery</a></h1>
     <p>Your platform for training programs and running inspiration</p>
   </header>
 
-  <!-- Navigeringsmeny -->
   <nav>
     <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="programs.html">Training Programs</a></li>
       <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="programs.html">Training Programs</a></li>
       <li><a href="races.html">Races</a></li>
       <li><a href="news.html">News</a></li>
       <li><a href="podcast.html">Podcast</a></li>
@@ -251,39 +218,35 @@
     </ul>
   </nav>
 
-  <!-- Hero-sektion för kalorikalkylatorn -->
   <section class="hero">
     <div>
-      <h2>Kalorikalkylator för Löpning & Gång</h2>
-      <p>Beräkna exakt hur många kalorier du bränner under ditt pass med vår avancerade kalkylator.</p>
+      <h2>Calorie Calculator for Running & Walking</h2>
+      <p>Get an accurate estimate of how many calories you burn during your workout.</p>
     </div>
   </section>
 
-  <!-- SEO-anpassad text och kalkylatorformulär -->
-  <section class="content-section" id="calorie-calculator">
-    <h2>Kalorikalkylator - Räkna ut dina förbrända kalorier</h2>
+  <section class="content-section">
+    <h2>Calorie Calculator for Running & Walking – Get Accurate Results</h2>
     <p>
-      Vår kalorikalkylator för löpning och gång är designad för att ge dig en noggrann uppskattning av hur många kalorier du förbränner under ditt träningspass. Genom att ange din vikt, längden på ditt pass i minuter och den tillryggalagda distansen i meter, kan du få en exakt beräkning baserad på din hastighet. 
-      Detta verktyg är oumbärligt för dig som vill optimera din träning, följa dina framsteg och anpassa din kost för att nå dina personliga mål. Run Mastery, din ultimata plattform för löpning, ger dig de verktyg du behöver för att lyckas.
+      Most fitness apps miscalculate calorie burn, but Run Mastery's Calorie Calculator for Running & Walking provides a more precise estimate based on your weight, distance, and workout duration.
     </p>
     <form onsubmit="calculateCalories(event)">
-      <label for="weight">Vikt (kg):</label>
-      <input type="number" id="weight" placeholder="t.ex. 70" required>
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" placeholder="e.g. 70" required>
       
-      <label for="duration">Träningslängd (minuter):</label>
-      <input type="number" id="duration" placeholder="t.ex. 30" required>
+      <label for="duration">Duration (minutes):</label>
+      <input type="number" id="duration" placeholder="e.g. 30" required>
       
-      <label for="distance">Distans (meter):</label>
-      <input type="number" id="distance" placeholder="t.ex. 5000" required>
+      <label for="distance">Distance (meters):</label>
+      <input type="number" id="distance" placeholder="e.g. 5000" required>
       
-      <label for="activity">Aktivitet:</label>
+      <label for="activity">Activity:</label>
       <select id="activity" required>
-        <option value="">Välj aktivitet</option>
-        <option value="löpning">Löpning</option>
-        <option value="gång">Gång</option>
+        <option value="running">Running</option>
+        <option value="walking">Walking</option>
       </select>
       
-      <button type="submit" class="cta-button">Beräkna</button>
+      <button type="submit" class="cta-button">Calculate</button>
     </form>
     <div id="result"></div>
   </section>
