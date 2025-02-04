@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Calculator - Run Mastery</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Grundläggande styling, anpassad för enhetlig design */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #ffcc00;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    header h1 a {
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    nav {
+      background-color: #000;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .nav-links li {
+      margin: 0 15px;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #ffcc00;
+    }
+    .content-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f4f4f4;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ffcc00;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .cta-button:hover {
+      background-color: #e6b800;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 10px 20px;
+      }
+      .nav-links {
+        flex-direction: column;
+      }
+      .nav-links li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+  <script>
+    function calculateCalories(event) {
+      event.preventDefault();
+      // Hämta värden från formuläret
+      const weight = parseFloat(document.getElementById("weight").value);
+      const durationMinutes = parseFloat(document.getElementById("duration").value);
+      const activitySelect = document.getElementById("activity");
+      const met = parseFloat(activitySelect.options[activitySelect.selectedIndex].value);
+      
+      if (isNaN(weight) || isNaN(durationMinutes) || isNaN(met)) {
+        document.getElementById("result").innerText = "Please fill in all fields correctly.";
+        return;
+      }
+      
+      // Omvandla duration till timmar
+      const durationHours = durationMinutes / 60;
+      // Beräkna kaloriförbrukningen
+      const calories = met * weight * durationHours;
+      
+      document.getElementById("result").innerText = "Estimated Calories Burned: " + calories.toFixed(2) + " kcal";
+    }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1><a href="index.html">Run Mastery</a></h1>
+  </header>
+
+  <!-- Navigationsmeny -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="programs.html">Training Programs</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="races.html">Races</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Innehållssektion för kaloriekalkylatorn -->
+  <section class="content-section" id="calorie-calculator">
+    <h2>Calorie Calculator</h2>
+    <p>Enter your details below to estimate how many calories you burn during your workout.</p>
+    
+    <form onsubmit="calculateCalories(event)">
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" placeholder="e.g. 70" required>
+
+      <label for="duration">Duration (minutes):</label>
+      <input type="number" id="duration" placeholder="e.g. 30" required>
+
+      <label for="activity">Activity Type:</label>
+      <select id="activity" required>
+        <option value="">Select an activity</option>
+        <option value="3.5">Walking (3.5 MET)</option>
+        <option value="7.5">Cycling (7.5 MET)</option>
+        <option value="8.0">Swimming (8.0 MET)</option>
+        <option value="9.0">Running (9.0 MET)</option>
+        <!-- Lägg till fler aktiviteter vid behov -->
+      </select>
+
+      <button type="submit" class="cta-button">Calculate</button>
+    </form>
+
+    <div id="result"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Run Mastery. All rights reserved.</p>
+  </footer>
+</body>
+</html>
