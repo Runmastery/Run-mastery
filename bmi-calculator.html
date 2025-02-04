@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator - Run Mastery</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Calculate your Body Mass Index (BMI) accurately with our BMI Calculator. Optimize your running performance with the right weight balance.">
+  <meta name="keywords" content="BMI Calculator, Body Mass Index, Running, Health, Fitness">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #ffcc00;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    header h1 a {
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    nav {
+      background-color: #000;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin: 0 15px;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+    .content-section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .calculator-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+    .calculator-container label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .calculator-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .calculator-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .button-group a {
+      padding: 10px 15px;
+      background-color: #ffcc00;
+      border-radius: 5px;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      .calculator-container {
+        padding: 10px;
+      }
+      .button-group {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html">Run Mastery</a></h1>
+    <p>Your platform for training programs and running inspiration</p>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="programs.html">Training Programs</a></li>
+      <li><a href="races.html">Races</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="content-section">
+    <h2>BMI Calculator</h2>
+    <p>Enter your weight and height to calculate your Body Mass Index (BMI).</p>
+    <div class="calculator-container">
+      <form onsubmit="calculateBMI(); return false;">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" step="0.1" required>
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" step="0.1" required>
+        <button type="submit">Calculate BMI</button>
+      </form>
+      <div id="result"></div>
+    </div>
+    <div class="button-group">
+      <a href="pace_calculator.html">Pace Calculator</a>
+      <a href="calorie_calculator.html">Calorie Calculator</a>
+      <a href="hydration_calculator.html">Hydration Calculator</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Run Mastery. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function calculateBMI() {
+      var weight = document.getElementById('weight').value;
+      var height = document.getElementById('height').value;
+      if (weight > 0 && height > 0) {
+        var heightMeters = height / 100;
+        var bmi = weight / (heightMeters * heightMeters);
+        document.getElementById('result').innerHTML = "<h3>Your BMI: " + bmi.toFixed(1) + "</h3>";
+      } else {
+        document.getElementById('result').innerHTML = "<h3>Please enter valid values.</h3>";
+      }
+    }
+  </script>
+</body>
+</html>
