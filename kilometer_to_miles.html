@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kilometer to Miles Converter - Run Mastery</title>
-  <meta name="description" content="Convert kilometers to miles easily with our calculator. Run Mastery helps runners optimize training with precise tools.">
-  <meta name="keywords" content="kilometers to miles, running conversion, distance converter">
+  <meta name="description" content="Convert kilometers to miles and miles to kilometers easily with our calculator. Run Mastery helps runners optimize training with precise tools.">
+  <meta name="keywords" content="kilometers to miles, miles to kilometers, running conversion, distance converter">
   <link rel="stylesheet" href="style.css">
   <style>
     body {
@@ -126,13 +126,15 @@
   </nav>
 
   <section class="content-section">
-    <h2>Kilometer to Miles Converter</h2>
-    <p>Use this tool to quickly convert kilometers to miles and optimize your running training.</p>
+    <h2>Kilometer & Miles Converter</h2>
+    <p>Use this tool to quickly convert between kilometers and miles.</p>
     <div class="calculator-container">
-      <form onsubmit="convertKmToMiles(); return false;">
+      <form onsubmit="convertDistance(); return false;">
         <label for="kilometers">Kilometers:</label>
-        <input type="number" id="kilometers" placeholder="Enter kilometers" required>
-        <button type="submit">Convert</button>
+        <input type="number" id="kilometers" placeholder="Enter kilometers" oninput="convertFromKm()">
+        
+        <label for="miles">Miles:</label>
+        <input type="number" id="miles" placeholder="Enter miles" oninput="convertFromMiles()">
       </form>
       <div id="result"></div>
     </div>
@@ -148,10 +150,22 @@
   </footer>
 
   <script>
-    function convertKmToMiles() {
+    function convertFromKm() {
       let km = document.getElementById("kilometers").value;
-      let miles = km * 0.621371;
-      document.getElementById("result").innerHTML = `<h3>${km} km = ${miles.toFixed(2)} miles</h3>`;
+      if (km) {
+        document.getElementById("miles").value = (km * 0.621371).toFixed(2);
+      } else {
+        document.getElementById("miles").value = "";
+      }
+    }
+    
+    function convertFromMiles() {
+      let miles = document.getElementById("miles").value;
+      if (miles) {
+        document.getElementById("kilometers").value = (miles / 0.621371).toFixed(2);
+      } else {
+        document.getElementById("kilometers").value = "";
+      }
     }
   </script>
 </body>
