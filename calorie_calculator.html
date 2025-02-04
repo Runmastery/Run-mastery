@@ -58,6 +58,14 @@
     .nav-links a:hover {
       color: #ffcc00;
     }
+    .content-section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
     form {
       max-width: 500px;
       margin: 20px auto;
@@ -65,15 +73,13 @@
       padding: 20px;
       border-radius: 5px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      text-align: left;
     }
     label {
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
     }
-    input[type="number"],
-    select {
+    input, select {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -122,37 +128,27 @@
     .button-group a:hover {
       background-color: #e6b800;
     }
-    .content-section {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    .content-section h2 {
-      text-align: center;
-    }
-    .content-section p {
-      text-align: center;
-    }
   </style>
   <script>
-    function calculateCalories(event) {
-      event.preventDefault();
-      const weight = parseFloat(document.getElementById("weight").value);
-      const duration = parseFloat(document.getElementById("duration").value);
-      const distance = parseFloat(document.getElementById("distance").value) / 1000;
-      const activity = document.getElementById("activity").value;
+    function calculateCalories() {
+      let weight = parseFloat(document.getElementById("weight").value);
+      let MET = parseFloat(document.getElementById("activity").value);
+      let time = parseFloat(document.getElementById("time").value);
+      let genderFactor = parseFloat(document.getElementById("gender").value);
+      let elevation = parseFloat(document.getElementById("elevation").value);
 
-      if (isNaN(weight) || isNaN(duration) || isNaN(distance)) {
-        document.getElementById("result").innerText = "Please fill in all fields correctly.";
+      if (isNaN(weight) || isNaN(time) || weight <= 0 || time <= 0) {
+        document.getElementById("result").innerHTML = "Please enter valid values!";
         return;
       }
 
-      const met = activity === "running" ? 1.02 : 0.95;
-      const calories = met * weight * distance;
-      document.getElementById("result").innerText = `Estimated Calories Burned: ${calories.toFixed(2)} kcal`;
+      let hours = time / 60;
+      let elevationFactor = elevation > 0 ? (elevation / 100) * 1.5 : 0;
+      let adjustedMET = MET + elevationFactor;
+
+      let caloriesBurned = adjustedMET * weight * hours * genderFactor;
+
+      document.getElementById("result").innerHTML = `You burned approximately <strong>${caloriesBurned.toFixed(2)}</strong> calories!`;
     }
   </script>
 </head>
@@ -176,26 +172,34 @@
   </nav>
 
   <section class="content-section">
-    <h2>Calorie Calculator for Running & Walking – Get Accurate Results</h2>
-    <p>Most fitness apps miscalculate calorie burn, but Run Mastery's Calorie Calculator for Running & Walking provides a more precise estimate based on your weight, distance, and workout duration. Get accurate data to track your progress and optimize your training.</p>
-    <form onsubmit="calculateCalories(event)">
-      <label for="weight">Weight (kg):</label>
-      <input type="number" id="weight" placeholder="e.g. 70" required>
-
-      <label for="duration">Duration (minutes):</label>
-      <input type="number" id="duration" placeholder="e.g. 30" required>
-
-      <label for="distance">Distance (meters):</label>
-      <input type="number" id="distance" placeholder="e.g. 5000" required>
-
-      <label for="activity">Activity:</label>
-      <select id="activity" required>
-        <option value="running">Running</option>
-        <option value="walking">Walking</option>
+    <h2>Calorie Calculator for Running & Walking</h2>
+    <form onsubmit="calculateCalories(); return false;">
+      <label for="gender">Your Gender:</label>
+      <select id="gender">
+        <option value="1">Male</option>
+        <option value="0.9">Female</option>
       </select>
 
-      <button type="submit" class="cta-button">Calculate</button>
+      <label for="weight">Your Weight (kg):</label>
+      <input type="number" id="weight" placeholder="e.g. 70" required>
+
+      <label for="activity">Activity:</label>
+      <select id="activity">
+        <option value="3.8">Walking (5 km/h)</option>
+        <option value="8.3">Running (8 km/h)</option>
+        <option value="10.0">Running (10 km/h)</option>
+        <option value="13.5">Running (16 km/h)</option>
+      </select>
+
+      <label for="time">Duration (minutes):</label>
+      <input type="number" id="time" placeholder="e.g. 30" required>
+
+      <label for="elevation">Elevation Gain (meters, optional):</label>
+      <input type="number" id="elevation" placeholder="e.g. 50" value="0">
+
+      <button type="submit" class="cta-button">Calculate Calories</button>
     </form>
+
     <div id="result"></div>
 
     <div class="button-group">
