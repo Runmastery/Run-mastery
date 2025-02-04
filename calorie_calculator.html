@@ -4,227 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calorie Calculator for Running - Run Mastery</title>
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Use our Calorie Calculator for Running to get an accurate estimate of how many calories you burn. Run Mastery helps runners optimize training with precise tools.">
-  <meta name="keywords" content="calorie calculator, running, Run Mastery, running calculator, calories burned">
+  <meta name="description" content="Accurately estimate the calories burned while running or walking based on weight, distance, duration, and elevation gain.">
+  <meta name="keywords" content="calorie calculator, running, running calories, fitness, running tools">
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #ffcc00;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: bold;
-      margin: 0;
-    }
-    header h1 a {
-      color: black;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-    nav {
-      background-color: #000;
-      padding: 15px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .nav-links {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      flex-wrap: nowrap;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .nav-links li {
-      margin: 0 15px;
-      white-space: nowrap;
-    }
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover {
-      color: #ffcc00;
-    }
-    .content-section {
-      max-width: 800px;
-      margin: 10px auto;
-      padding: 20px;
-      text-align: center;
-    }
-    .content-section h2, .content-section p {
-      margin: 0 0 20px;
-    }
-    .calculator-container {
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      margin: 20px auto;
-      max-width: 500px;
-      text-align: left;
-    }
-    .calculator-container label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-    }
-    .calculator-container input,
-    .calculator-container select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .calculator-container button {
-      width: 100%;
-      padding: 10px;
-      background-color: #ffcc00;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .calculator-container button:hover {
-      background-color: #e6b800;
-    }
-    #result {
-      margin-top: 20px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-align: center;
-    }
-    .button-group {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 40px;
-    }
-    .button-group a {
-      display: inline-block;
-      padding: 10px 15px;
-      background-color: #ffcc00;
-      color: black;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-    .button-group a:hover {
-      background-color: #e6b800;
-    }
-    @media (max-width: 768px) {
-      .calculator-container {
-        margin: 10px;
-        padding: 15px;
-      }
-      .nav-links {
-        flex-direction: column;
-        align-items: center;
-      }
-      .button-group {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-  </style>
 </head>
 <body>
   <header>
-    <h1><a href="index.html">Run Mastery</a></h1>
+    <h1>Run Mastery</h1>
     <p>Your platform for training programs and running inspiration</p>
   </header>
 
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="calculators.html">Calculators</a></li>
-      <li><a href="programs.html">Training Programs</a></li>
-      <li><a href="races.html">Races</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="podcast.html">Podcast</a></li>
-      <li><a href="about_us.html">About Us</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <section class="content-section">
+  <section class="calculator-container">
     <h2>Calorie Calculator for Running</h2>
-    <p><strong>Calorie Calculator for Running & Walking – Get Accurate Results</strong></p>
-    <p>Most fitness apps miscalculate calorie burn, but Run Mastery's Calorie Calculator for Running & Walking provides a more precise estimate based on your weight, distance, and workout duration. Get accurate data to track your progress and optimize your training.</p>
-    <div class="calculator-container">
-      <form onsubmit="calculateCalories(); return false;">
-        <label for="weight">Your Weight (kg):</label>
-        <input type="number" id="weight" placeholder="e.g. 70" required>
-
-        <label for="distance">Distance (meters):</label>
-        <input type="number" id="distance" placeholder="e.g. 5000" required>
-
-        <label for="time">Duration (minutes):</label>
-        <input type="number" id="time" placeholder="e.g. 30" required>
-
-        <label for="gender">Your Gender:</label>
-        <select id="gender">
-          <option value="1">Male</option>
-          <option value="0.9">Female</option>
-        </select>
-
-        <label for="elevation">Elevation Gain (meters, optional):</label>
-        <input type="number" id="elevation" placeholder="e.g. 50" value="0">
-
-        <button type="submit">Calculate</button>
-      </form>
-      <div id="result"></div>
-    </div>
-
-    <div class="button-group">
-      <a href="pace_calculator.html">Pace Calculator</a>
-      <a href="bmi_calculator.html">BMI Calculator</a>
-      <a href="hydration_calculator.html">Hydration Calculator</a>
-    </div>
+    <form onsubmit="calculateCalories(); return false;">
+      <label for="weight">Your Weight:</label>
+      <input type="number" id="weight" placeholder="e.g. 70" required>
+      <select id="weight-unit">
+        <option value="1">kg</option>
+        <option value="2.20462">lbs</option>
+      </select>
+      
+      <label for="distance">Distance:</label>
+      <input type="number" id="distance" placeholder="e.g. 5" required>
+      <select id="distance-unit">
+        <option value="1">km</option>
+        <option value="1.60934">miles</option>
+      </select>
+      
+      <label for="time">Duration (minutes):</label>
+      <input type="number" id="time" placeholder="e.g. 30" required>
+      
+      <label for="gender">Your Gender:</label>
+      <select id="gender">
+        <option value="1">Male</option>
+        <option value="0.9">Female</option>
+      </select>
+      
+      <label for="elevation">Elevation Gain (optional, meters):</label>
+      <input type="number" id="elevation" placeholder="e.g. 50">
+      
+      <button type="submit">Calculate</button>
+    </form>
+    <div id="result"></div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Run Mastery. All rights reserved.</p>
-  </footer>
+  <div class="button-group">
+    <a href="calculators.html">Back to All Calculators</a>
+  </div>
 
   <script>
     function calculateCalories() {
       const weight = parseFloat(document.getElementById("weight").value);
+      const weightUnit = parseFloat(document.getElementById("weight-unit").value);
       const distance = parseFloat(document.getElementById("distance").value);
+      const distanceUnit = parseFloat(document.getElementById("distance-unit").value);
       const time = parseFloat(document.getElementById("time").value);
       const genderFactor = parseFloat(document.getElementById("gender").value);
-      const elevation = parseFloat(document.getElementById("elevation").value);
-
+      const elevation = parseFloat(document.getElementById("elevation").value) || 0;
+      
       if (isNaN(weight) || isNaN(distance) || isNaN(time) || weight <= 0 || distance <= 0 || time <= 0) {
         document.getElementById("result").innerHTML = "Please enter valid values for all fields.";
         return;
       }
-
+      
+      const convertedWeight = weight / weightUnit;
+      const convertedDistance = distance * distanceUnit;
       const hours = time / 60;
-      const speed = distance / 1000 / hours;
+      const speed = convertedDistance / hours;
       const baseMET = speed > 8 ? (speed < 16 ? 10 : 13.5) : 8;
       const adjustedMET = baseMET + (elevation > 0 ? (elevation / 100) * 1.5 : 0);
-      const calories = adjustedMET * weight * hours * genderFactor;
-
+      const calories = adjustedMET * convertedWeight * hours * genderFactor;
+      
       document.getElementById("result").innerHTML = `Estimated Calories Burned: <strong>${calories.toFixed(2)}</strong> kcal (Speed: ${speed.toFixed(2)} km/h)`;
     }
   </script>
