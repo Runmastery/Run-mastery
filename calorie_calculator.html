@@ -45,9 +45,12 @@
       list-style: none;
       padding: 0;
       margin: 0;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     .nav-links li {
-      margin: 0 15px;
+      margin: 0 10px;
+      white-space: nowrap;
     }
     .nav-links a {
       color: white;
@@ -62,14 +65,31 @@
       max-width: 800px;
       margin: 20px auto;
       padding: 20px;
-      background-color: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      background-color: transparent;
       text-align: center;
     }
-    form {
-      max-width: 500px;
+    .content-section h2, .content-section p {
+      margin: 0 0 20px;
+    }
+    .calculator-container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       margin: 20px auto;
+      max-width: 500px;
+    }
+    ul {
+      text-align: left;
+      margin: 0 auto 20px;
+      padding: 0;
+      max-width: 500px;
+    }
+    ul li {
+      list-style: disc;
+      margin-left: 20px;
+    }
+    form {
       background: white;
       padding: 20px;
       border-radius: 5px;
@@ -108,50 +128,7 @@
       font-weight: bold;
       text-align: center;
     }
-    .button-group {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
-    }
-    .button-group a {
-      display: inline-block;
-      padding: 15px 20px;
-      background-color: #ffcc00;
-      color: black;
-      text-decoration: none;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-    .button-group a:hover {
-      background-color: #e6b800;
-    }
   </style>
-  <script>
-    function calculateCalories() {
-      let weight = parseFloat(document.getElementById("weight").value);
-      let time = parseFloat(document.getElementById("time").value);
-      let distance = parseFloat(document.getElementById("distance").value);
-      let genderFactor = parseFloat(document.getElementById("gender").value);
-      let elevation = parseFloat(document.getElementById("elevation").value);
-
-      if (isNaN(weight) || isNaN(time) || isNaN(distance) || weight <= 0 || time <= 0 || distance <= 0) {
-        document.getElementById("result").innerHTML = "Please enter valid values!";
-        return;
-      }
-
-      let speed = distance / (time / 60); // km/h
-      let MET = speed < 8 ? 8 : speed < 10 ? 9 : speed < 12 ? 11 : 12.5; // Adjust MET dynamically based on speed
-      let elevationFactor = elevation > 0 ? (elevation / 100) * 1.5 : 0;
-      let adjustedMET = MET + elevationFactor;
-      let hours = time / 60;
-      let caloriesBurned = adjustedMET * weight * hours * genderFactor;
-
-      document.getElementById("result").innerHTML = `You ran at <strong>${speed.toFixed(2)} km/h</strong>, burned approximately <strong>${caloriesBurned.toFixed(2)}</strong> calories, and climbed <strong>${elevation}</strong> meters!`;
-    }
-  </script>
 </head>
 <body>
   <header>
@@ -171,62 +148,5 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
-
-  <section class="content-section">
-    <div>
-      <h2>Calorie Calculator for Running</h2>
-      <p>
-        <strong>Calorie Calculator for Running & Walking – Get Accurate Results</strong><br>
-        Most fitness apps miscalculate calorie burn, but Run Mastery's Calorie Calculator for Running & Walking provides a more precise estimate based on your weight, distance, and workout duration. Get accurate data to track your progress and optimize your training.
-      </p>
-      <h3>How It Works</h3>
-      <ul>
-        <li>✔ Enter your weight – Personalized calculation for better accuracy.</li>
-        <li>✔ Add distance & duration – Get results based on actual effort.</li>
-        <li>✔ See precise calories burned – No more guesswork like in generic apps.</li>
-      </ul>
-      <h3>Why Choose This Running Calculator?</h3>
-      <ul>
-        <li>More accurate than most apps – Uses speed and effort for better precision.</li>
-        <li>Optimize your training – Adjust intensity based on real data.</li>
-        <li>Track progress – Stay on top of your fitness goals.</li>
-      </ul>
-      <p>Start tracking smarter with Run Mastery's Calorie Calculator for Running & Walking today!</p>
-    </div>
-
-    <form onsubmit="calculateCalories(); return false;">
-      <label for="weight">Your Weight (kg):</label>
-      <input type="number" id="weight" placeholder="e.g. 70" required>
-
-      <label for="distance">Distance (meters):</label>
-      <input type="number" id="distance" placeholder="e.g. 5000" required>
-
-      <label for="time">Duration (minutes):</label>
-      <input type="number" id="time" placeholder="e.g. 30" required>
-
-      <label for="gender">Your Gender:</label>
-      <select id="gender">
-        <option value="1">Male</option>
-        <option value="0.9">Female</option>
-      </select>
-
-      <label for="elevation">Elevation Gain (meters, optional):</label>
-      <input type="number" id="elevation" placeholder="e.g. 50" value="0">
-
-      <button type="submit" class="cta-button">Calculate Calories</button>
-    </form>
-
-    <div id="result"></div>
-
-    <div class="button-group">
-      <a href="pace_calculator.html">Pace Calculator</a>
-      <a href="bmi_calculator.html">BMI Calculator</a>
-      <a href="hydration_calculator.html">Hydration Calculator</a>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Run Mastery. All rights reserved.</p>
-  </footer>
 </body>
 </html>
