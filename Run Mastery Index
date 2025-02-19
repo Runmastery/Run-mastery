@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run Mastery Index Calculator</title>
+  <meta name="description" content="Calculate your Run Mastery Index and compare your performance to world records based on age.">
+  <meta name="keywords" content="Run Mastery Index, running calculator, performance index, running, fitness">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #ffcc00;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    header h1 a {
+      color: black;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    nav {
+      background-color: #000;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      justify-content: center;
+    }
+    .nav-links li {
+      margin: 0 15px;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #ffcc00;
+    }
+    .content-section {
+      max-width: 800px;
+      margin: 10px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .calculator-container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      max-width: 500px;
+      text-align: left;
+    }
+    .calculator-container label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .calculator-container select,
+    .calculator-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .time-inputs {
+      display: flex;
+      justify-content: space-between;
+    }
+    .time-inputs input {
+      width: 30%;
+    }
+    .calculator-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .calculator-container button:hover {
+      background-color: #e6b800;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    .button-group {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .button-group a {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #ffcc00;
+      color: black;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .button-group a:hover {
+      background-color: #e6b800;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html">Run Mastery</a></h1>
+    <p>Your platform for training programs and running inspiration</p>
+  </header>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="calculators.html">Calculators</a></li>
+      <li><a href="programs.html">Training Programs</a></li>
+      <li><a href="races.html">Races</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="about_us.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="content-section">
+    <h2>Run Mastery Index Calculator</h2>
+    <p><strong>Calculate Your Running Performance</strong></p>
+    
+    <div class="calculator-container">
+      <label for="gender">Select Gender:</label>
+      <select id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+      </select>
+
+      <label for="age">Enter Your Age:</label>
+      <input type="number" id="age" min="1" required>
+
+      <label for="distance">Select Distance:</label>
+      <select id="distance">
+          <option value="5k">5K</option>
+          <option value="10k">10K</option>
+          <option value="half">Half Marathon</option>
+          <option value="marathon">Marathon</option>
+      </select>
+
+      <label>Enter Time:</label>
+      <div class="time-inputs">
+        <input type="number" id="hours" placeholder="Hours" min="0">
+        <input type="number" id="minutes" placeholder="Minutes" min="0">
+        <input type="number" id="seconds" placeholder="Seconds" min="0">
+      </div>
+
+      <button onclick="calculateIndex()">Calculate Index</button>
+      <div id="result"></div>
+    </div>
+    
+    <div class="button-group">
+      <a href="calculators.html">Back to All Calculators</a>
+    </div>
+  </section>
+
+  <script>
+    function getAgeCategory(age, gender) {
+      const ageCategories = gender === "male" ? ["U20", "senior", "M35", "M40", "M45", "M50", "M55", "M60", "M65", "M70", "M75", "M80", "M85", "M90"] 
+                                               : ["U20", "senior", "W35", "W40", "W45", "W50", "W55", "W60", "W65", "W70", "W75", "W80", "W85", "W90"];
+      const ageLimits = [20, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90];
+      return ageCategories[ageLimits.findIndex(limit => age < limit)] || ageCategories[ageCategories.length - 1];
+    }
+
+    function calculateIndex() {
+      let gender = document.getElementById("gender").value;
+      let age = parseInt(document.getElementById("age").value);
+      let ageCategory = getAgeCategory(age, gender);
+      let distance = document.getElementById("distance").value;
+      let hours = parseInt(document.getElementById("hours").value) || 0;
+      let minutes = parseInt(document.getElementById("minutes").value) || 0;
+      let seconds = parseInt(document.getElementById("seconds").value) || 0;
+      
+      document.getElementById("result").innerText = `Your Run Mastery Index: XX\nEquivalent performances: ...`;
+    }
+  </script>
+</body>
+</html>
