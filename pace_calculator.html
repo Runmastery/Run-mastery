@@ -30,32 +30,6 @@
       text-decoration: none;
       text-transform: uppercase;
     }
-    nav {
-      background-color: #000;
-      padding: 15px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .nav-links {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      justify-content: center;
-    }
-    .nav-links li {
-      margin: 0 15px;
-    }
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover {
-      color: #ffcc00;
-    }
     .content-section {
       max-width: 800px;
       margin: 10px auto;
@@ -137,22 +111,8 @@
     <p>Your platform for training programs and running inspiration</p>
   </header>
 
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="calculators.html">Calculators</a></li>
-      <li><a href="programs.html">Training Programs</a></li>
-      <li><a href="races.html">Races</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="podcast.html">Podcast</a></li>
-      <li><a href="about_us.html">About Us</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
   <section class="content-section">
     <h2>Run Mastery Index Calculator</h2>
-    <p><strong>Calculate Your Running Performance</strong></p>
     
     <div class="calculator-container">
       <label for="gender">Select Gender:</label>
@@ -189,11 +149,23 @@
   </section>
 
   <script>
+    const worldRecordTimes = {
+      "male": {
+        "senior": { "5k": 12.59, "10k": 26.18, "half": 56.70, "marathon": 120.58 },
+        "M40": { "5k": 13.43, "10k": 27.48, "half": 59.53, "marathon": 124.25 }
+      },
+      "female": {
+        "senior": { "5k": 14.11, "10k": 29.02, "half": 62.87, "marathon": 129.93 },
+        "W40": { "5k": 15.47, "10k": 31.37, "half": 67.87, "marathon": 141.57 }
+      }
+    };
+
     function getAgeCategory(age, gender) {
-      const ageCategories = gender === "male" ? ["U20", "senior", "M35", "M40", "M45", "M50", "M55", "M60", "M65", "M70", "M75", "M80", "M85", "M90"] 
-                                               : ["U20", "senior", "W35", "W40", "W45", "W50", "W55", "W60", "W65", "W70", "W75", "W80", "W85", "W90"];
-      const ageLimits = [20, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90];
-      return ageCategories[ageLimits.findIndex(limit => age < limit)] || ageCategories[ageCategories.length - 1];
+      if (age < 20) return "U20";
+      if (age < 35) return "senior";
+      if (age < 40) return "M35";
+      if (age < 45) return "M40";
+      return "M50";
     }
 
     function calculateIndex() {
@@ -204,8 +176,17 @@
       let hours = parseInt(document.getElementById("hours").value) || 0;
       let minutes = parseInt(document.getElementById("minutes").value) || 0;
       let seconds = parseInt(document.getElementById("seconds").value) || 0;
-      
-      document.getElementById("result").innerText = `Your Run Mastery Index: XX\nEquivalent performances: ...`;
+
+      let totalTime = hours * 60 + minutes + seconds / 60;
+      let seniorWR = worldRecordTimes[gender]["senior"][distance];
+      let ageWR = worldRecordTimes[gender][ageCategory][distance];
+
+      let overallIndex = 100 - ((totalTime - seniorWR) / (seniorWR) * 50);
+      let ageIndex = 100 - ((totalTime - ageWR) / (ageWR) * 50);
+
+      document.getElementById("result").innerText = 
+        `Overall Run Mastery Index: ${Math.max(0, Math.min(100, overallIndex)).toFixed(2)}\n` +
+        `Run Mastery Age Index: ${Math.max(0, Math.min(100, ageIndex)).toFixed(2)}`;
     }
   </script>
 </body>
