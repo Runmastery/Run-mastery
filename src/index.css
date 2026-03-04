@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-accent: #FFD34E;
+  --color-accent-weak: rgba(255, 211, 78, 0.12);
+  --color-accent-ring: rgba(255, 211, 78, 0.45);
+  --color-bg: #FFFFFF;
+  --color-surface: #F3F4F6;
+  --color-text: #0B0B0B;
+  --color-muted: #5A5A5A;
+  --color-border: #D2D6DC;
+  --color-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body { margin: 0; color: var(--color-text); background: var(--color-bg); }
