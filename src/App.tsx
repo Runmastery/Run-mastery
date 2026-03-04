@@ -33,11 +33,7 @@ export default function App() {
     }, 1800);
   };
 
-codex/implement-plan-generation-logic-ft2cv7
   if (!plan && step <= 16) return <OnboardingFlow step={step} profile={profile} setStep={setStep} setProfile={setProfile} onGenerate={onGenerate} />;
-=======
-  if (!plan && step <= 9) return <OnboardingFlow step={step} profile={profile} setStep={setStep} setProfile={setProfile} onGenerate={onGenerate} />;
-main
   if (!plan) return <LoadingScreen phase={phase} />;
   return <PlanView plan={plan} onUpdate={updateSession} />;
 }

@@ -4,7 +4,6 @@ import type { UserProfile } from '../types/user';
 const KEY = 'run-mastery-onboarding';
 
 export const defaultProfile: UserProfile = {
-codex/implement-plan-generation-logic-ft2cv7
   fullName: '',
   email: '',
   dateOfBirth: '',
@@ -22,26 +21,12 @@ codex/implement-plan-generation-logic-ft2cv7
   injuries: '',
   avoidInTraining: '',
   sleepHours: '7–8 hours'
-=======
-  targetDistance: '10K',
-  goalTime: 3000,
-  current5kTime: 1680,
-  trainingDaysPerWeek: 3,
-  preferredDays: ['Tuesday', 'Thursday', 'Saturday'],
-  experienceLevel: 'Intermediate',
-  injuries: '',
-  includesStrength: false
-main
 };
 
 export const useOnboarding = () => {
   const [profile, setProfile] = useState<UserProfile>(() => {
     const raw = localStorage.getItem(KEY);
- codex/implement-plan-generation-logic-ft2cv7
     return raw ? (JSON.parse(raw) as UserProfile) : defaultProfile;
-=======
-    return raw ? JSON.parse(raw) as UserProfile : defaultProfile;
-main
   });
   const [step, setStep] = useState<number>(() => Number(localStorage.getItem(`${KEY}-step`) ?? 1));
 
