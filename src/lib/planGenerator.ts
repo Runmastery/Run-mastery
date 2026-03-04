@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import type { Plan, Session, WeekPlan } from '../types/plan';
 import type { UserProfile } from '../types/user';
 import { calculatePaces, secondsToClock } from './paceUtils';
@@ -115,7 +114,7 @@ export const generatePlan = (profile: UserProfile): Plan => {
   });
 
   return {
-    planId: uuidv4(),
+    planId: crypto.randomUUID(),
     metadata: {
       targetDistance: profile.targetDistance,
       goalTime: secondsToClock(profile.goalTime),
